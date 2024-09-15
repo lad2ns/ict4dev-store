@@ -1,0 +1,36 @@
+openapi: 3.0.3
+info:
+  title: product-service
+  description: This is a product-service API.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8082/api/v1/products
+    description: Local server
+paths:
+  /all:
+    get:
+      summary: Retrieve a list of all products
+      responses:
+        '200':
+          description: A list of products
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductModel'
+components:
+  schemas:
+    ProductModel:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "123"
+        name:
+          type: string
+          example: "Sample Product"
+        price:
+          type: number
+          format: float
+          example: 19.99

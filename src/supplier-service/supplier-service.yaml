@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: supplier-service-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: supplier-service
+  template:
+    metadata:
+      labels:
+        app: supplier-service
+    spec:
+      containers:
+      - name: supplier-service
+        image: ladasdev/supplier-service:tag
+        ports:
+        - containerPort: 8084
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: supplier-service
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8084
+    targetPort: 8080
+  selector:
+    app: supplier-service

@@ -1,0 +1,39 @@
+version: '3'
+services:
+  payment-service:
+    image: ladasdev/payment-service:tag
+    ports:
+      - "8081:8080"
+    networks:
+      - mynetwork
+
+  product-service:
+    image: ladasdev/product-service:tag
+    ports:
+      - "8082:8080"
+    networks:
+      - mynetwork
+
+  stock-service:
+    image: ladasdev/stock-service:tag
+    ports:
+      - "8083:8080"
+    networks:
+      - mynetwork
+
+  supplier-service:
+    image: ladasdev/supplier-service:tag
+    ports:
+      - "8084:8080"
+    networks:
+      - mynetwork
+
+  user-service:
+    image: ladasdev/user-service:tag
+    ports:
+      - "8085:8080"
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
